@@ -1,30 +1,18 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoEyeSharp } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+import useRegisterForm from "../hooks/useRegisterForm";
 
 export default function RegisterForm() {
-  const [passwordType, setPasswordType] = useState("password");
-  const [confirmPasswordType, setConfirmPasswordType] = useState("password");
-
-  const passwordClickHandler = () => {
-    if (passwordType === "password") {
-      setPasswordType("text");
-    } else {
-      setPasswordType("password");
-    }
-  };
-
-  const confirmPasswordClickHandler = () => {
-    if (confirmPasswordType === "password") {
-      setConfirmPasswordType("text");
-    } else {
-      setConfirmPasswordType("password");
-    }
-  };
+  const {
+    passwordType,
+    confirmPasswordType,
+    passwordClickHandler,
+    confirmPasswordClickHandler,
+  } = useRegisterForm();
 
   return (
-    <form className="bg-white w-7/12 p-8 rounded-lg">
+    <form className="bg-white p-8 rounded-lg mx-4 lg:mx-0 lg:w-7/12">
       <h3 className="text-3xl font-semibold opacity-70 mb-6">
         Create an account
       </h3>
