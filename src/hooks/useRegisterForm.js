@@ -6,17 +6,17 @@ export default function useRegisterForm() {
 
   const passwordClickHandler = () => {
     if (passwordType === "password") {
-      setPasswordType("text");
+      setPasswordType(() => "text");
     } else {
-      setPasswordType("password");
+      setPasswordType(() => "password");
     }
   };
 
   const confirmPasswordClickHandler = () => {
     if (confirmPasswordType === "password") {
-      setConfirmPasswordType("text");
+      setConfirmPasswordType(() => "text");
     } else {
-      setConfirmPasswordType("password");
+      setConfirmPasswordType(() => "password");
     }
   };
 
