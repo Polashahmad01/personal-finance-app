@@ -12,7 +12,7 @@ export default function RegisterForm() {
   } = useRegisterForm();
 
   return (
-    <form className="bg-white p-8 rounded-lg mx-4 lg:mx-0 lg:w-7/12">
+    <form className="bg-white p-8 rounded-lg mx-4 mb-4 lg:mx-0 lg:w-7/12">
       <h3 className="text-3xl font-semibold opacity-70 mb-6">
         Create an account
       </h3>
