@@ -103,7 +103,7 @@ export default function RegisterForm() {
       <div className="flex items-center justify-center gap-2 opacity-70">
         <p>Already have an account?</p>
         <Link
-          to="#"
+          to="/auth/login"
           className="font-semibold underline transition-all hover:bg-opacity-70">
           Login
         </Link>
