@@ -2,8 +2,7 @@ import { Outlet } from "react-router-dom";
 
 export default function AuthLayout() {
   return (
-    <main>
-      <h1>AuthLayout</h1>
+    <main className="bg-[#F7F4EF]">
       <Outlet />
     </main>
   );
