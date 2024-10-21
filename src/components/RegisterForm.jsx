@@ -6,9 +6,10 @@ import useRegisterForm from "../hooks/useRegisterForm";
 export default function RegisterForm() {
   const {
     errors,
-    register,
+    isPending,
     passwordType,
     confirmPasswordType,
+    register,
     onSubmit,
     handleSubmit,
     passwordClickHandler,
@@ -113,7 +114,11 @@ export default function RegisterForm() {
         </div>
       </div>
       <div className="flex justify-center items-center mb-4">
-        <button className="bg-[#6a3ee5] text-white w-full py-2 rounded-lg transition-all hover:bg-opacity-80">
+        <button
+          disabled={isPending}
+          className={`${
+            isPending && "cursor-not-allowed "
+          } bg-[#6a3ee5] text-white w-full py-2 rounded-lg transition-all hover:bg-opacity-80`}>
           Create Account
         </button>
       </div>

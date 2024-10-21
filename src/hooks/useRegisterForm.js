@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNotification } from "./useNotification";
 import { registerMutation } from "../services/auth.service";
 import { userRegisterSchemaValidator } from "../utils/userSchemaValidation";
 
 export default function useRegisterForm() {
   const [passwordType, setPasswordType] = useState("password");
   const [confirmPasswordType, setConfirmPasswordType] = useState("password");
+  const { notifySuccess, notifyError } = useNotification();
 
   const {
     register,
@@ -24,7 +26,7 @@ export default function useRegisterForm() {
   });
 
   const onSubmit = (formData) => {
-    console.log(formData);
+    mutate(formData);
   };
 
   const passwordClickHandler = () => {
@@ -43,11 +45,26 @@ export default function useRegisterForm() {
     }
   };
 
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+
+    const { success, statusCode, message } = data;
+
+    if (success && statusCode === 201) {
+      notifySuccess(message);
+    } else if (!success && (statusCode === 400 || statusCode === 422)) {
+      notifyError(message);
+    }
+  }, [data, notifyError, notifySuccess]);
+
   return {
     errors,
-    register,
+    isPending,
     passwordType,
     confirmPasswordType,
+    register,
     onSubmit,
     handleSubmit,
     passwordClickHandler,
