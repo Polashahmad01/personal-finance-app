@@ -11,7 +11,7 @@ export const registerMutation = async (formData) => {
 };
 
 export const loginMutation = async (formData) => {
-  const response = await makeApiRequest("/api/v1/user", {
+  const response = await makeApiRequest("/api/v1/user/login", {
     headers,
     method: "POST",
     body: JSON.stringify(formData),

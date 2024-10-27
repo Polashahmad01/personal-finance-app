@@ -25,8 +25,6 @@ export default function useLoginForm() {
 
   const onSubmit = (formData) => {
     mutate(formData);
-    console.log("data", data);
-    console.log("isPending", isPending);
   };
 
   const passwordTypeHandler = () => {
@@ -37,8 +35,21 @@ export default function useLoginForm() {
     }
   };
 
+  useEffect(() => {
+    if (!data) {
+      return;
+    }
+    const { success, statusCode, message } = data;
+    if (success && statusCode === 200) {
+      notifySuccess(message);
+    } else if (!success && (statusCode === 401 || statusCode === 422)) {
+      notifyError(message);
+    }
+  }, [data, notifyError, notifySuccess]);
+
   return {
     errors,
+    isPending,
     passwordType,
     onSubmit,
     register,

@@ -6,6 +6,7 @@ import useLoginForm from "../hooks/useLoginForm";
 export default function LoginForm() {
   const {
     errors,
+    isPending,
     passwordType,
     onSubmit,
     register,
@@ -64,7 +65,9 @@ export default function LoginForm() {
         </div>
       </div>
       <div className="flex justify-center items-center mb-4">
-        <button className="bg-[#6a3ee5] text-white w-full py-2 rounded-lg transition-all hover:bg-opacity-80">
+        <button
+          disabled={isPending}
+          className="bg-[#6a3ee5] text-white w-full py-2 rounded-lg transition-all hover:bg-opacity-80">
           Login
         </button>
       </div>
